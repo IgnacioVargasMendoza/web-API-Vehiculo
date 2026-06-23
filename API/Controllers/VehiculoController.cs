@@ -40,7 +40,7 @@ namespace API.Controllers
         {
             var result = await _vehiculoFlujo.Obtener();
             if (!result.Any()) {
-                return NotFound();
+                return NoContent();
             }
             
             return Ok(result);
