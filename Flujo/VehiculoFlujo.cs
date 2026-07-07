@@ -33,7 +33,7 @@ namespace Flujo
             return _vehiculoDA.Obtener();
         }
 
-        public Task<VehiculoResponse> Obtener(Guid Id)
+        public Task<VehiculoDetalle> Obtener(Guid Id)
         {
             return _vehiculoDA.Obtener(Id);
         }
