@@ -18,20 +18,35 @@ namespace API.Controllers
             _logger = logger;
         }
         [HttpPost]
-        public async Task<IActionResult> Agregar([FromBody] VehiculoRequest vehiculo)
+        public async Task<IActionResult> Agregar([FromBody]VehiculoRequest vehiculo)
         {
             var result = await _vehiculoFlujo.Agregar(vehiculo);
             return CreatedAtAction(nameof(Obtener), new { Id = result }, result);
         }
         [HttpPatch("{Id}")]
-        public async Task<IActionResult> Editar([FromRoute] Guid Id, [FromBody] VehiculoRequest vehiculo)
+        public async Task<IActionResult> Editar([FromRoute]Guid Id, [FromBody]VehiculoRequest vehiculo)
         {
+            if (!await VerificarExistencia(Id))
+            {
+                return NotFound();
+            }
             var result = await _vehiculoFlujo.Editar(Id, vehiculo);
             return Ok(result);
         }
-        [HttpDelete("{Id}")]
-        public async Task<IActionResult> Eliminar([FromRoute] Guid Id)
+
+        private async Task<Boolean> VerificarExistencia(Guid Id)
         {
+            var resultadoExistente = await _vehiculoFlujo.Obtener(Id);
+            return resultadoExistente != null;
+        }
+
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> Eliminar([FromRoute]Guid Id)
+        {
+            if (!await VerificarExistencia(Id))
+            {
+                return NotFound();
+            }
             var result = await _vehiculoFlujo.Eliminar(Id);
             return NoContent();
         }
@@ -47,7 +62,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{Id}")]
-        public async Task<IActionResult> Obtener([FromRoute] Guid Id)
+        public async Task<IActionResult> Obtener([FromRoute]Guid Id)
         {
             var result = await _vehiculoFlujo.Obtener(Id);
             return Ok(result);

@@ -12,9 +12,9 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 BEGIN TRANSACTION
-	Delete  
-	From Vehiculo
-	WHERE  (Vehiculo.Id = @Id)
-	SELECT @Id AS Id
+Delete  
+From Vehiculo
+WHERE  (Vehiculo.Id = @Id)
+SELECT @Id AS Id
 COMMIT TRANSACTION
 END

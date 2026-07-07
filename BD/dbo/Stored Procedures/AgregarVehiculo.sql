@@ -14,7 +14,7 @@ CREATE PROCEDURE AgregarVehiculo
     @TelefonoPropietario AS varchar(max)
 AS
 BEGIN
-    BEGIN TRANSACTION --Garantiza que ambas transacciones se ejecuten. Si una falla, la otra no se ejecuta. Insert y Select
+    BEGIN TRANSACTION
     INSERT INTO Vehiculo
     (
         Id,
