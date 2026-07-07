@@ -7,4 +7,6 @@
   </Project>
   <Project Path="DA/DA.csproj" Id="7ef513fd-edbf-44d9-8eb5-c58ca06f780e" />
   <Project Path="Flujo/Flujo.csproj" Id="7414e151-6e41-4f15-8153-66d86a668061" />
+  <Project Path="Reglas/Reglas.csproj" Id="817e68c7-efb8-48e9-9064-9df49c5980fe" />
+  <Project Path="Servicios/Servicios.csproj" Id="2a2cc65c-66f4-4917-8900-421e48a4aa53" />
 </Solution>
